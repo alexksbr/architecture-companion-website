@@ -33,7 +33,7 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: var(--font-body);
   background: var(--bg-primary);
@@ -98,6 +98,7 @@ section { position: relative; }
   display: flex; align-items: center;
   position: relative;
   padding-top: 6rem;
+  overflow: hidden;
 }
 .hero::before {
   content: '';
@@ -880,6 +881,68 @@ footer {
 }
 .footer-right a:hover { color: var(--text-secondary); }
 
+/* === MOBILE MAP ALTERNATIVE === */
+.map-mobile { display: none; }
+.map-mobile-hero {
+  text-align: center;
+  padding: 1.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background: var(--accent-glow);
+  margin-bottom: 1.5rem;
+}
+.map-mobile-us {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.map-mobile-us-desc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+.map-mobile-divider {
+  text-align: center;
+  position: relative;
+  margin: 1.5rem 0;
+}
+.map-mobile-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 1px;
+  background: var(--border);
+}
+.map-mobile-divider span {
+  position: relative;
+  background: var(--bg-primary);
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+.map-mobile-list {
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.map-mobile-item {
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+.map-mobile-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+.map-mobile-gap {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
 /* === SCROLL ANIMATIONS === */
 .fade-in {
   opacity: 0;
@@ -897,8 +960,8 @@ footer {
   .mode-layout.reverse > * { direction: ltr; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid::before { display: none; }
-  .market-map { padding: 1.5rem; }
-  .map-grid { min-height: 320px; }
+  .market-map { display: none; }
+  .map-mobile { display: block; }
   .nav-links { display: none; }
 }
 @media (max-width: 600px) {
@@ -997,6 +1060,42 @@ footer {
           <div class="map-x-label">MANUAL / ON-DEMAND</div>
           <div class="map-x-label">PER CHANGE (CI/PR)</div>
           <div class="map-x-label">CONTINUOUS / REAL-TIME</div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile alternative -->
+    <div class="map-mobile fade-in">
+      <div class="map-mobile-hero">
+        <div class="map-mobile-us">Architecture Companion</div>
+        <div class="map-mobile-us-desc">Continuous quality attribute evaluation</div>
+      </div>
+      <div class="map-mobile-divider">
+        <span>What existing tools cover</span>
+      </div>
+      <div class="map-mobile-list">
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Manual Architecture Reviews</div>
+          <div class="map-mobile-gap">Quality attributes, but manual and infrequent</div>
+        </div>
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Modernization Tools</div>
+          <div class="map-mobile-gap">Architecture structure, but only for legacy migration</div>
+        </div>
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Architecture Test Frameworks</div>
+          <div class="map-mobile-gap">Structure rules, but manually coded, no AI reasoning</div>
+        </div>
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Software Intelligence</div>
+          <div class="map-mobile-gap">Code metrics, not architectural quality attributes</div>
+        </div>
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Code Health Tools</div>
+          <div class="map-mobile-gap">Function-level complexity, not system-level architecture</div>
+        </div>
+        <div class="map-mobile-item">
+          <div class="map-mobile-name">Code Review Tools</div>
+          <div class="map-mobile-gap">Bugs and style, not architectural decisions</div>
         </div>
       </div>
     </div>
@@ -1289,7 +1388,7 @@ footer {
     </div>
     <div class="fade-in" style="text-align:center; margin-top:2.5rem;">
       <p style="color:var(--text-secondary); font-size: 1.1rem; font-weight: 500;">
-        It doesn't just check attributes in isolation — it analyzes the trade-offs between them.
+        It doesn't just check attributes in isolation but identifies important trade-offs between them.
       </p>
       <a href="https://www.lasr-reviews.org/quality-model/" target="_blank" style="display:inline-block; margin-top:1rem; font-size:0.85rem; color:var(--accent); text-decoration:none; font-family:var(--font-mono); letter-spacing:0.05em;">Explore the LASR Quality Model →</a>
     </div>
@@ -1352,7 +1451,7 @@ footer {
       <div class="step">
         <div class="step-number">02</div>
         <div class="step-title">Model</div>
-        <div class="step-desc">It builds an architectural model — services, dependencies, boundaries, communication patterns.</div>
+        <div class="step-desc">It builds an architectural model: services, dependencies, boundaries, communication patterns.</div>
       </div>
       <div class="step">
         <div class="step-number">03</div>
@@ -1373,7 +1472,7 @@ footer {
   <div class="container">
     <div class="fade-in" style="text-align:center; max-width:700px; margin:0 auto;">
       <div class="section-label">Beyond Prompting</div>
-      <div class="section-title" style="margin-left:auto;margin-right:auto;">What separates a product from a prompt.</div>
+      <div class="section-title" style="margin-left:auto;margin-right:auto;">What separates the Architecture Companion from a prompt.</div>
       <div class="section-desc" style="margin-left:auto;margin-right:auto;">A well-prompted LLM can do decent point-in-time analysis. Here's what it can't do.</div>
     </div>
     <div class="diff-grid fade-in">
